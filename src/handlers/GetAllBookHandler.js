@@ -1,7 +1,7 @@
 const books = require('../books')
 
 const GetAllBookHandler = request => {
-	const { name, reading } = request.query
+	const { name, reading, finished } = request.query
 
 	let filteredBooks = books
 
@@ -16,6 +16,10 @@ const GetAllBookHandler = request => {
 
 	if (reading) {
 		filteredBooks = books.filter(book => book.reading === !!reading)
+	}
+
+	if (finished) {
+		filteredBooks = books.filter(book => book.finished === (finished === '1'))
 	}
 
 	return {
