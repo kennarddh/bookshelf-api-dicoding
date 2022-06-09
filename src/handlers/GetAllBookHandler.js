@@ -1,7 +1,7 @@
 const books = require('../books')
 
 const GetAllBookHandler = request => {
-	const { name } = request.query
+	const { name, reading } = request.query
 
 	let filteredBooks = books
 
@@ -12,6 +12,10 @@ const GetAllBookHandler = request => {
 				book.name.toLowerCase().includes(name.toLowerCase())
 			// eslint-disable-next-line function-paren-newline
 		)
+	}
+
+	if (reading) {
+		filteredBooks = books.filter(book => book.reading === !!reading)
 	}
 
 	return {
