@@ -1,5 +1,11 @@
-const {} = require('./handler')
+const { AddBookHandler } = require('./handler')
 
-const routes = []
+const routes = [
+	{
+		method: 'POST',
+		path: '/books',
+		handler: AddBookHandler,
+	},
+]
 
 module.exports = routes
