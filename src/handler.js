@@ -81,4 +81,15 @@ const AddBookHandler = (request, hapi) => {
 	return response
 }
 
-module.exports = { AddBookHandler }
+const GetAllBookHandler = () => ({
+	status: 'success',
+	data: {
+		books: books.map(({ id, name, publisher }) => ({
+			id,
+			name,
+			publisher,
+		})),
+	},
+})
+
+module.exports = { AddBookHandler, GetAllBookHandler }
